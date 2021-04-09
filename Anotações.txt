@@ -1,0 +1,7 @@
+classe Position
+implementar programação defensiva no contrutor da classe Position
+os limites do tabuleiro podem ser extourandos
+L:8-10
+ 
+implementar as execeções no metodo "setValues" na classe Position
+os limites da matriz do tabuleiro podem ser extourados
