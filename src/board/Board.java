@@ -1,6 +1,7 @@
 package board;
 
 import chess.ChessPiece;
+import position.Position;
 
 public class Board {
 

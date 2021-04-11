@@ -1,7 +1,7 @@
 package aplication;
 import java.util.Scanner;
 
-import board.Position;
+import position.Position;
 import chess.ChessExecption;
 import chess.ChessMatch;
 import chess.ChessPiece;

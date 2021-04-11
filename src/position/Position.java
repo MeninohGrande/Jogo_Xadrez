@@ -1,5 +1,6 @@
-package board;
+package position;
 
+import board.BoardException;
 import chess.ChessExecption;
 
 public class Position {

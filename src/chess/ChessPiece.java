@@ -1,7 +1,7 @@
 package chess;
 
 import board.Board;
-import board.Position;
+import position.Position;
 
 public abstract class ChessPiece {
 

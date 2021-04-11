@@ -3,10 +3,10 @@ package aplication;
 import java.util.Scanner;
 
 import board.BoardException;
-import board.Position;
 import chess.ChessExecption;
 import chess.ChessMatch;
 import chess.Color;
+import position.Position;
 
 public class Programa {
 
@@ -38,6 +38,9 @@ public class Programa {
 
 		} catch (BoardException e){
 			System.out.println(e.getMessage());
+			e.printStackTrace();
+			sc.nextLine();
+		} catch(RuntimeException e){
 			e.printStackTrace();
 			sc.nextLine();
 		}

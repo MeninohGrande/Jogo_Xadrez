@@ -1,7 +1,7 @@
 package chess;
 
 import board.Board;
-import board.Position;
+import position.Position;
 import chess.pieces.Bishop;
 import chess.pieces.King;
 import chess.pieces.Knight;
