@@ -1,26 +1,68 @@
 package chess.pieces;
 
 import board.Board;
+import board.Position;
 import chess.ChessPiece;
 import chess.Color;
 
 public class Knight extends ChessPiece{
-
+    
     public Knight(Board board, Color color) {
         super(board, color);
-        //TODO Auto-generated constructor stub
     }
-
-    @Override
-    public boolean[][] possibleMoves() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
     @Override
     public String toString() {
-        // TODO Auto-generated method stub
-        return null;
+        return "C";
     }
-    
+
+    private void testPosition(Position p){
+        if (board.positionExists(p))
+           possibleMoves[p.getColuna()][p.getLinha()] = canMove(p);
+    }
+    @Override
+    public boolean[][] possibleMoves() {
+        Position p = new Position();
+
+        //NE1
+        p.setColuna(super.position.getColuna() + 1);
+        p.setLinha(super.position.getLinha() - 2);
+        testPosition(p);
+        
+        //NE2
+        p.setColuna(super.position.getColuna() + 2);
+        p.setLinha(super.position.getLinha() - 1);
+        testPosition(p);
+
+        //SE1
+        p.setColuna(super.position.getColuna() + 2);
+        p.setLinha(super.position.getLinha() + 1);
+        testPosition(p);
+
+        //SE2
+        p.setColuna(super.position.getColuna() + 1);
+        p.setLinha(super.position.getLinha() + 2);
+        testPosition(p);
+
+        //SW1
+        p.setColuna(super.position.getColuna() - 1);
+        p.setLinha(super.position.getLinha() + 2);
+        testPosition(p);
+
+        //SW2
+        p.setColuna(super.position.getColuna() - 2);
+        p.setLinha(super.position.getLinha() + 1);
+        testPosition(p);
+
+        //NW1
+        p.setColuna(super.position.getColuna() - 2);
+        p.setLinha(super.position.getLinha() - 1);
+        testPosition(p);
+
+        //NW2
+        p.setColuna(super.position.getColuna() - 1);
+        p.setLinha(super.position.getLinha() - 2);
+        testPosition(p);
+        
+        return possibleMoves;
+    }
 }

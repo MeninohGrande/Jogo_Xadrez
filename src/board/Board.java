@@ -5,7 +5,7 @@ import chess.ChessPiece;
 public class Board {
 
 	private final int LINHA = 8, COLUNA = 8;
-	private ChessPiece[][] chessPiece = new ChessPiece[LINHA][COLUNA];
+	private ChessPiece[][] chessPiece = new ChessPiece[COLUNA][LINHA];
 	
 	public Board(){
 		System.out.println("Novo Tabuleiro");
@@ -18,7 +18,7 @@ public class Board {
 	}
 	
 	private void setChessPiece(ChessPiece piece, Position p) {
-		this.chessPiece[p.getLinha()][p.getColuna()] = piece;
+		this.chessPiece[p.getColuna()][p.getLinha()] = piece;
 	}
 	
 	//Retorna a peça pela posição
@@ -27,24 +27,24 @@ public class Board {
 	}
 	
 	//Retorna a peça pela matriz
-	public ChessPiece getChessPiece(int linha, int coluna) {
-		if (!positionExist(linha, coluna))
+	public ChessPiece getChessPiece(int coluna, int linha) {
+		if (!positionExist(coluna, linha))
 			throw new BoardException("Posição invalida");
 		
-		return chessPiece[linha][coluna];
+		return chessPiece[coluna][linha];
 	}
 	
 	public boolean positionExists(Position position) {
-		return positionExist(position.getLinha(), position.getColuna());
+		return positionExist(position.getColuna(), position.getLinha());
 	}
 	
-	private boolean positionExist(int linha, int coluna) {
-		return linha <= this.LINHA && linha >= 0 && coluna >= 0 && coluna <= this.COLUNA;
+	private boolean positionExist(int coluna, int linha) {
+		return linha < this.LINHA && linha >= 0 && coluna >= 0 && coluna < this.COLUNA;
 	}
 	
 	public boolean thereIsAPiece(Position position) {
 		if (!positionExists(position)) 
-			throw new BoardException("Está posição não existe no tabuleiro");
+			throw new BoardException("Esta posição não existe no tabuleiro");
 		return getChessPiece(position) != null;
 	}
 	
@@ -54,8 +54,8 @@ public class Board {
 		if (thereIsAPiece(p))
 			throw new BoardException("Já existe uma peça nessa posição");
 		
-		this.chessPiece[p.getLinha()][p.getColuna()] = piece;
-		this.chessPiece[p.getLinha()][p.getColuna()].setPosition(p);
+		this.chessPiece[p.getColuna()][p.getLinha()] = piece;
+		this.chessPiece[p.getColuna()][p.getLinha()].setPosition(p);
 		//piece.setPosition(p);
 	}
 	
@@ -66,7 +66,7 @@ public class Board {
 			return null;
 		
 		ChessPiece temp = getChessPiece(p);
-		temp.setPosition(null);
+		temp.setPosition(getChessPiece(p).getPosition());
 		setChessPiece(null, p);
 		
 		return temp;

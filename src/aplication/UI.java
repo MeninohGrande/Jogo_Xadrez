@@ -1,5 +1,4 @@
 package aplication;
-import java.text.ParseException;
 import java.util.Scanner;
 
 import board.Position;
@@ -44,12 +43,13 @@ public class UI {
     }
 
 
-    public static Position readChessPosition(Scanner sc) throws ChessExecption, ParseException{
+    public static Position readChessPosition(Scanner sc) throws ChessExecption{
        
         String chessPosition = sc.nextLine();
         char coluna = chessPosition.toUpperCase().charAt(0);
         int linha = Integer.parseInt(chessPosition.substring(1));
        
+
         //Retorna Position na forma de xadrez
         return new Position(coluna, linha);
 
@@ -59,9 +59,8 @@ public class UI {
         for (int linha = 0; linha < pieces.length; linha++){
             System.out.print(( 8 - linha) + " ");
 
-
                 for (int coluna = 0; coluna < pieces.length; coluna++){
-                    printPiece(pieces[linha][coluna],false);
+                    printPiece(pieces[coluna][linha],false);
                 }
                 System.out.println();
         }
@@ -73,7 +72,7 @@ public class UI {
             System.out.print((8 - linha) +  " ");
             
             for (int coluna = 0; coluna < pieces.length; coluna++){
-                printPiece(pieces[linha][coluna], possibleMoves[linha][coluna]);
+                printPiece(pieces[coluna][linha], possibleMoves[coluna][linha]);
             }
             System.out.println();
         }

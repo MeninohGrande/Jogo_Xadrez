@@ -7,14 +7,15 @@ public abstract class ChessPiece {
 
 	protected Position position;
 	private Color color;
-	private int moveCount;
+	private int moveCount = 0;
 	protected Board board;
-	
+	protected boolean [][] possibleMoves;
+
 	public ChessPiece(Board board, Color color) {
 		this.board = board;
 		this.color = color;
+		possibleMoves = new boolean[this.board.getCOLUNA()][this.board.getLINHA()];
 	}
-	
 	public Position getPosition() {
 		return position;
 	}
@@ -34,7 +35,11 @@ public abstract class ChessPiece {
 		this.moveCount --;
 	}
 	
-	public abstract boolean[][] possibleMoves();
+	protected abstract boolean[][] possibleMoves();
+
+	protected boolean canMove(Position p){
+		return !board.thereIsAPiece(p) || isThereOponentPiece(p);
+	}
 	
 	public boolean isAPossibleMove(Position p) {
 		return possibleMoves()[p.getLinha()][p.getColuna()];

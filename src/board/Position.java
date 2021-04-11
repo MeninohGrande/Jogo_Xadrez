@@ -9,6 +9,8 @@ public class Position {
 	private char chessColumn;
 	private int chessRow;
 	
+	public Position(){
+	}
 	//Construtor posição de matriz
 	public Position(int coluna, int linha) {
 		setValues(coluna, linha);
@@ -21,8 +23,18 @@ public class Position {
 	public int getLinha() {
 		return linha;
 	}
+	public void setLinha(int linha) {
+		//Implementação sem validação da existencia da posição
+		this.linha = linha;
+		this.chessRow = 8 - linha;
+	}
 	public int getColuna() {
 		return coluna;
+	}
+	public void setColuna(int coluna) {
+		//Implementação sem validação da existencia da posição
+		this.coluna = coluna;
+		this.chessColumn = Character.toString(coluna + 'A').charAt(0);
 	}
 	public char getchessColumn() {
 		return chessColumn;
